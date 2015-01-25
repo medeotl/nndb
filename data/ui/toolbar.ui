@@ -1,0 +1,8 @@
+<ui>
+    <toolbar name="NavigateToolbar">
+        <toolitem action="New"/>
+        <toolitem action="Open"/>
+        <toolitem action="Save"/>
+        <toolitem action="Refresh"/>
+    </toolbar>
+</ui>        

@@ -25,7 +25,7 @@ class MainWindow(Gtk.Window):
         self.btn_first = Gtk.Button("first")
         self.btn_first.set_sensitive(False) # disabilito il pulsante
         self.btn_previous = Gtk.Button("previous")
-        self.btn_previous.set_sensitive(False) # come sopra
+        self.btn_previous.set_sensitive(False)
         self.btn_next = Gtk.Button("next")
         self.btn_last = Gtk.Button("last")
         
@@ -66,60 +66,53 @@ class MainWindow(Gtk.Window):
         grid.attach_next_to(bbox, lbl_copertina,
                             Gtk.PositionType.BOTTOM, 1, 1)
 
+    def get_showed_issue(self):
+        return self.showed_issue
         
+    def set_showed_issue(self, issue):
+        self.showed_issue = issue
+        
+    def set_navigation_buttons(self, issue):
+        """ 
+        setta i pulsanti btn_(first|prev|next|last) correttamente
+        """
+        d = {1               : (False, False, True, True),
+             self.last_issue : (True, True, False, False)
+            }
+        try:
+            maschera = d[issue]
+        except KeyError:
+            maschera = (True, True, True, True)
+            
+        self.btn_first.set_sensitive(maschera[0])
+        self.btn_previous.set_sensitive(maschera[1])
+        self.btn_next.set_sensitive(maschera[2])
+        self.btn_last.set_sensitive(maschera[3])
+
     def show_first_issue(self, button):
         """ mostra il primo albo """
-        if self.showed_issue == self.last_issue:
-            # riabilito pulsanti next e last
-            self.btn_next.set_sensitive(True)
-            self.btn_last.set_sensitive(True)
-        self.show_issue(1)
-        # disabilito pulsanti first e previous
-        self.btn_first.set_sensitive(False)
-        self.btn_previous.set_sensitive(False)
+        self.show_issue( 1 )
     
     def show_last_issue(self, button):
         """ mostra l'ultimo albo """
-        if self.showed_issue == 1:
-            # riabilito pulsanti first e previous
-            self.btn_first.set_sensitive(True)
-            self.btn_previous.set_sensitive(True)
-        self.show_issue(self.last_issue)
-        # disabilito pulsanti next e last
-        self.btn_next.set_sensitive(False)
-        self.btn_last.set_sensitive(False)      
+        self.show_issue( self.last_issue )
     
     def show_previous_issue(self, button):
         """ mostra il precedente albo """
-        self.show_issue(self.showed_issue-1)
-        if self.showed_issue == 1:
-            # disabilito pulsanti first e previous
-            self.btn_first.set_sensitive(False)
-            self.btn_previous.set_sensitive(False)
-        elif self.showed_issue == self.last_issue-1:
-            # riabilito pulsanti next e last
-            self.btn_next.set_sensitive(True)
-            self.btn_last.set_sensitive(True)
+        self.show_issue( self.get_showed_issue()-1 )
     
     def show_next_issue(self, button):
         """ mostra il successivo albo """
-        self.show_issue(self.showed_issue+1)
-        if self.showed_issue == self.last_issue:
-            # disabilito pulsanti next e last
-            self.btn_next.set_sensitive(False)
-            self.btn_last.set_sensitive(False)
-        elif self.showed_issue == 2:
-            # riabilito pulsanti first e previous
-            self.btn_first.set_sensitive(True)
-            self.btn_previous.set_sensitive(True)
+        self.show_issue( self.get_showed_issue()+1 )
         
     def show_issue(self, albo):
         """ mostra l'albo passato come parametro """
+        print(albo)
         str_albo = '{:03}'.format(albo)
         self.cover.set_from_file(self.cover_path + str_albo + ".jpg")
         self.set_title( db[albo][0] )
-        self.showed_issue = albo
-        print self.showed_issue
+        self.set_showed_issue(albo)
+        self.set_navigation_buttons(albo)
         
         
 win = MainWindow()
@@ -127,6 +120,3 @@ win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 
 Gtk.main()
-	
-	
-

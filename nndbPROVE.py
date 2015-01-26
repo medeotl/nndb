@@ -66,6 +66,9 @@ class MainWindow(Gtk.Window):
         grid.attach_next_to(bbox, lbl_copertina,
                             Gtk.PositionType.BOTTOM, 1, 1)
 
+    def get_showed_issue(self):
+        return self.showed_issue()    
+        
         
     def show_first_issue(self, button):
         """ mostra il primo albo """
@@ -129,4 +132,5 @@ win.show_all()
 Gtk.main()
 	
 	
+
 

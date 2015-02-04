@@ -23,7 +23,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">First</property>
+            <property name="label" translatable="yes">button</property>
             <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -36,7 +36,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button2">
-            <property name="label" translatable="yes">Previous</property>
+            <property name="label" translatable="yes">button</property>
             <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -49,7 +49,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button3">
-            <property name="label" translatable="yes">Next</property>
+            <property name="label" translatable="yes">button</property>
             <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -62,7 +62,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button4">
-            <property name="label" translatable="yes">Last</property>
+            <property name="label" translatable="yes">button</property>
             <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

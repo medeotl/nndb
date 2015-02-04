@@ -43,13 +43,12 @@ class MainWindow(Gtk.Window):
 
         lbl_soggetto = Gtk.Label("Soggetto")
         self.bbox_soggetto = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        #~ self.bbox_soggetto.add( Gtk.Button("Nico") )
         lbl_sceneggiatura = Gtk.Label("Sceneggiatura")
-        bbox_sceneggiatura = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
+        self.bbox_sceneggiatura = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
         lbl_disegni = Gtk.Label("Disegni")
-        bbox_disegni = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
+        self.bbox_disegni = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
         lbl_copertina = Gtk.Label("Copertina")
-        bbox_copertina = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
+        self.bbox_copertina = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
         
         self.grid.attach_next_to(lbl_soggetto, self.cover, 
                             Gtk.PositionType.RIGHT, 1, 1)
@@ -58,17 +57,17 @@ class MainWindow(Gtk.Window):
                             
         self.grid.attach_next_to(lbl_sceneggiatura, self.bbox_soggetto, 
                             Gtk.PositionType.BOTTOM, 1, 1)
-        self.grid.attach_next_to(bbox_sceneggiatura, lbl_sceneggiatura,
+        self.grid.attach_next_to(self.bbox_sceneggiatura, lbl_sceneggiatura,
                             Gtk.PositionType.BOTTOM, 1, 1)
                             
-        self.grid.attach_next_to(lbl_disegni, bbox_sceneggiatura, 
+        self.grid.attach_next_to(lbl_disegni, self.bbox_sceneggiatura, 
                             Gtk.PositionType.BOTTOM, 1, 1)
-        self.grid.attach_next_to(bbox_disegni, lbl_disegni,
+        self.grid.attach_next_to(self.bbox_disegni, lbl_disegni,
                             Gtk.PositionType.BOTTOM, 1, 1)
                             
-        self.grid.attach_next_to(lbl_copertina, bbox_disegni, 
+        self.grid.attach_next_to(lbl_copertina, self.bbox_disegni, 
                             Gtk.PositionType.BOTTOM, 1, 1)
-        self.grid.attach_next_to(bbox_copertina, lbl_copertina,
+        self.grid.attach_next_to(self.bbox_copertina, lbl_copertina,
                             Gtk.PositionType.BOTTOM, 1, 1)
 
     def get_showed_issue(self):
@@ -119,12 +118,22 @@ class MainWindow(Gtk.Window):
         self.cover.set_from_file(self.cover_path + str_albo + ".jpg")
         self.set_title( str(albo) + " - " + db[albo][0] )
         
-        for autore in db[albo][1].split(", "):
-            print ( str(autore) )
-            self.bbox_soggetto.add( Gtk.Button( str(autore) ) )
-        self.bbox_soggetto.show_all() 
-            
-        #~ self.bbox_soggetto.show()
+        for soggettista in db [albo] [ 1].split (", "):
+            self.bbox_soggetto.add( Gtk.Button( str(soggettista) ) )
+        self.bbox_soggetto.show_all()
+        
+        for sceneggiatore in db [albo] [2].split (", "):
+            self.bbox_sceneggiatura.add( Gtk.Button( str(sceneggiatore) ) )
+        self.bbox_sceneggiatura.show_all()
+        
+        for disegnatore in db [albo] [3].split (", "):
+            self.bbox_disegni.add( Gtk.Button( str(disegnatore) ) )
+        self.bbox_disegni.show_all()
+        
+        for copertinista in db [albo] [4].split (", "):
+            self.bbox_copertina.add( Gtk.Button( str(copertinista) ) )
+        self.bbox_copertina.show_all()
+        
         
         self.set_showed_issue(albo)
         self.set_navigation_buttons(albo)

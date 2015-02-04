@@ -41,13 +41,14 @@ class MainWindow(Gtk.Window):
         self.btn_next.connect("clicked", self.show_next_issue)
         self.btn_last.connect("clicked", self.show_last_issue)
 
-        lbl_soggetto = Gtk.Label("Soggetto")
+        lbl_soggetto = Gtk.Label()
+        lbl_soggetto.set_markup("<b>Soggetto</b>")
         self.bbox_soggetto = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_sceneggiatura = Gtk.Label("Sceneggiatura")
+        lbl_sceneggiatura = Gtk.Label("<b>Sceneggiatura</b>")
         self.bbox_sceneggiatura = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_disegni = Gtk.Label("Disegni")
+        lbl_disegni = Gtk.Label("<b>Disegni</b>")
         self.bbox_disegni = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_copertina = Gtk.Label("Copertina")
+        lbl_copertina = Gtk.Label("<b>Copertina</b>")
         self.bbox_copertina = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
         
         self.grid.attach_next_to(lbl_soggetto, self.cover, 
@@ -109,31 +110,49 @@ class MainWindow(Gtk.Window):
         """ mostra il successivo albo """
         self.show_issue( self.get_showed_issue()+1 )
         
-    def printtta(pippa):
-        print(pippa)
-    
     def show_issue(self, albo):
         """ mostra l'albo passato come parametro """
         str_albo = '{:03}'.format(albo)
         self.cover.set_from_file(self.cover_path + str_albo + ".jpg")
         self.set_title( str(albo) + " - " + db[albo][0] )
         
+        # popolo la finestra con i dati degli autori
+        for pulsante in self.bbox_soggetto.get_children():
+            pulsante.destroy()
         for soggettista in db [albo] [ 1].split (", "):
-            self.bbox_soggetto.add( Gtk.Button( str(soggettista) ) )
+            self.bbox_soggetto.add( 
+                Gtk.Button( str(soggettista),
+                            relief=Gtk.ReliefStyle.NONE ) 
+            )
         self.bbox_soggetto.show_all()
         
+        for pulsante in self.bbox_sceneggiatura.get_children():
+            pulsante.destroy()
         for sceneggiatore in db [albo] [2].split (", "):
-            self.bbox_sceneggiatura.add( Gtk.Button( str(sceneggiatore) ) )
+            self.bbox_sceneggiatura.add( 
+                Gtk.Button( str(sceneggiatore),
+                            relief=Gtk.ReliefStyle.NONE) 
+            )
         self.bbox_sceneggiatura.show_all()
         
+        for pulsante in self.bbox_disegni.get_children():
+            pulsante.destroy()
         for disegnatore in db [albo] [3].split (", "):
-            self.bbox_disegni.add( Gtk.Button( str(disegnatore) ) )
+            self.bbox_disegni.add( 
+                Gtk.Button( str(disegnatore),
+                            relief=Gtk.ReliefStyle.NONE ) 
+            )
+                        
         self.bbox_disegni.show_all()
         
+        for pulsante in self.bbox_copertina.get_children():
+            pulsante.destroy()
         for copertinista in db [albo] [4].split (", "):
-            self.bbox_copertina.add( Gtk.Button( str(copertinista) ) )
+            self.bbox_copertina.add( 
+                Gtk.Button( str(copertinista),
+                            relief=Gtk.ReliefStyle.NONE ) 
+            )
         self.bbox_copertina.show_all()
-        
         
         self.set_showed_issue(albo)
         self.set_navigation_buttons(albo)

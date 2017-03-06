@@ -9,7 +9,7 @@ class MainWindow(Gtk.Window):
     
     def __init__(self):
         Gtk.Window.__init__(self)
-        self.set_border_width(10)
+        self.set_border_width(18)
 
         self.grid = Gtk.Grid()
         self.add(self.grid)

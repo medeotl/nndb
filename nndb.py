@@ -46,11 +46,14 @@ class MainWindow(Gtk.Window):
         lbl_soggetto = Gtk.Label()
         lbl_soggetto.set_markup("<b>Soggetto</b>")
         self.bbox_soggetto = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_sceneggiatura = Gtk.Label("<b>Sceneggiatura</b>")
+        lbl_sceneggiatura = Gtk.Label()
+        lbl_sceneggiatura.set_markup("<b>Sceneggiatura</b>")
         self.bbox_sceneggiatura = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_disegni = Gtk.Label("<b>Disegni</b>")
+        lbl_disegni = Gtk.Label()
+        lbl_disegni.set_markup("<b>Disegni</b>")
         self.bbox_disegni = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
-        lbl_copertina = Gtk.Label("<b>Copertina</b>")
+        lbl_copertina = Gtk.Label()
+        lbl_copertina.set_markup("<b>Copertina</b>")
         self.bbox_copertina = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
         
         self.grid.attach_next_to(lbl_soggetto, self.cover, 

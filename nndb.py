@@ -1,5 +1,7 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
+import gi
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from database import db
 
@@ -156,18 +158,10 @@ class MainWindow(Gtk.Window):
         
         self.set_showed_issue(albo)
         self.set_navigation_buttons(albo)
-
+        
 
 win = MainWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 
 Gtk.main()
-
-
-
-
-
-
-
-

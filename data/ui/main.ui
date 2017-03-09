@@ -12,7 +12,7 @@
           <object class="GtkImage" id="image1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="pixbuf">/home/medeo/coding/abandoned/nndb/data/cover/nat001.jpg</property>
+            <property name="pixbuf">../cover/nat001.jpg</property>
           </object>
           <packing>
             <property name="left_attach">0</property>

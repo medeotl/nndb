@@ -71,7 +71,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButtonBox" id="buttonbox1">
+          <object class="GtkButtonBox" id="bbox_soggetto">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">start</property>
@@ -127,7 +127,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButtonBox" id="buttonbox2">
+          <object class="GtkButtonBox" id="bbox_sceneggiatura">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="homogeneous">True</property>
@@ -154,7 +154,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButtonBox" id="buttonbox3">
+          <object class="GtkButtonBox" id="bbox_disegni">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">start</property>
@@ -210,7 +210,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButtonBox" id="buttonbox4">
+          <object class="GtkButtonBox" id="bbox_copertina">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="homogeneous">True</property>

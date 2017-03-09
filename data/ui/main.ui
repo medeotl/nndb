@@ -247,6 +247,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="show_first_issue" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -261,6 +262,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="show_previous_issue" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -275,6 +277,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="show_next_issue" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -289,6 +292,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="show_last_issue" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>

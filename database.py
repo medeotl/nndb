@@ -1,5 +1,5 @@
 db = {
-    1 : ("Agente speciale Alfa",
+    1 : ("Agente Speciale Alfa",
          "Antonio Serra", 
          "Antonio Serra", 
          "Claudio Castellini", 

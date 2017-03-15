@@ -242,7 +242,7 @@
             <property name="can_focus">False</property>
             <property name="layout_style">start</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="GtkButton" id="btn_first">
                 <property name="label" translatable="yes">First</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -257,7 +257,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="GtkButton" id="btn_previous">
                 <property name="label" translatable="yes">Previous</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -272,7 +272,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="GtkButton" id="btn_next">
                 <property name="label" translatable="yes">Next</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -287,7 +287,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
+              <object class="GtkButton" id="btn_last">
                 <property name="label" translatable="yes">Last</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>

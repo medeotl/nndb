@@ -26,10 +26,7 @@ class Handler:
         d = {1               : (False, False, True, True),
              self.last_issue : (True, True, False, False)
             }
-        try:
-            maschera = d[issue]
-        except KeyError:
-            maschera = (True, True, True, True)
+        maschera = d.get(issue, (True, True, True, True) )
             
         builder.get_object('btn_first').set_sensitive(maschera[0])
         builder.get_object('btn_previous').set_sensitive(maschera[1])
@@ -67,7 +64,6 @@ class Handler:
             for pulsante in bbox.get_children():
                 pulsante.destroy()
             for autore in db[albo][linea_autori].split(", "):
-                print (autore)
                 bbox.add(Gtk.Button(str(autore), relief=Gtk.ReliefStyle.NONE))
             bbox.show_all()
             linea_autori += 1

@@ -79,7 +79,6 @@
             <child>
               <object class="GtkButton" id="button5">
                 <property name="label" translatable="yes">Antonio Serra</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -106,7 +105,6 @@
             <child>
               <object class="GtkButton" id="button11">
                 <property name="label" translatable="yes">Claudio Castellini</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -132,7 +130,6 @@
             <child>
               <object class="GtkButton" id="button8">
                 <property name="label" translatable="yes">Antonio Serra</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -159,7 +156,6 @@
             <child>
               <object class="GtkButton" id="button12">
                 <property name="label" translatable="yes">Claudio Castellini</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -204,7 +200,6 @@
         <child>
           <object class="GtkButton" id="btn_first">
             <property name="label" translatable="yes">First</property>
-            <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">True</property>
@@ -219,7 +214,6 @@
         <child>
           <object class="GtkButton" id="btn_previous">
             <property name="label" translatable="yes">Previous</property>
-            <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">True</property>
@@ -234,7 +228,6 @@
         <child>
           <object class="GtkButton" id="btn_next">
             <property name="label" translatable="yes">Next</property>
-            <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -248,7 +241,6 @@
         <child>
           <object class="GtkButton" id="btn_last">
             <property name="label" translatable="yes">Last</property>
-            <property name="use_action_appearance">False</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

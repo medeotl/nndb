@@ -70,7 +70,7 @@ class Handler:
             
         self.set_showed_issue(albo)
         self.set_navigation_buttons(albo)
-        window.resize(1, 1) # 
+        window.resize(1, 1) # rimuovo spazio in eccesso
         
 
 GUI = './data/ui/main.ui'

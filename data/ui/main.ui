@@ -75,6 +75,7 @@
           <object class="GtkButtonBox" id="bbox_soggetto">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="layout_style">start</property>
             <child>
               <object class="GtkButton" id="button5">
@@ -100,6 +101,7 @@
           <object class="GtkButtonBox" id="bbox_disegni">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="homogeneous">True</property>
             <property name="layout_style">spread</property>
             <child>
@@ -126,6 +128,7 @@
           <object class="GtkButtonBox" id="bbox_sceneggiatura">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="layout_style">start</property>
             <child>
               <object class="GtkButton" id="button8">
@@ -151,6 +154,7 @@
           <object class="GtkButtonBox" id="bbox_copertina">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="homogeneous">True</property>
             <property name="layout_style">spread</property>
             <child>
@@ -171,30 +175,6 @@
           <packing>
             <property name="left_attach">4</property>
             <property name="top_attach">7</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButtonBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="layout_style">start</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">7</property>
-            <property name="width">4</property>
           </packing>
         </child>
         <child>
@@ -250,6 +230,9 @@
             <property name="left_attach">3</property>
             <property name="top_attach">8</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
         <child>
           <placeholder/>

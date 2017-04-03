@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk, Gio
 from database import db
 
 class Handler:
@@ -75,6 +75,17 @@ class Handler:
 
 GUI = './data/ui/main.ui'
 COVER_PATH = './data/cover/nat'
+
+style_provider = Gtk.CssProvider()
+style_file = Gio.File.new_for_path("./data/ui/style.css")
+    
+style_provider.load_from_file(style_file)
+
+Gtk.StyleContext.add_provider_for_screen(
+    Gdk.Screen.get_default(),
+    style_provider,
+    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+)
 
 builder = Gtk.Builder()
 builder.add_from_file( GUI )

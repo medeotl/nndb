@@ -1,0 +1,37 @@
+.cover {
+    border-style: solid;
+    border-width: 2px 2px 0px 2px;
+}
+
+
+
+/*
+ * Da usare per i pulsanti autori, forse
+ * 
+@define-color topbar_bg #333;
+
+.text-only-button{
+  font-weight: bold;
+  background-image: none;
+  background-color: transparent;
+  border:none;
+  text-shadow: none;
+  padding: 0px;
+  box-shadow: none;
+  border-radius: 0px;
+  border-bottom: 1px solid transparent;
+  min-height: 0px;
+}
+
+.text-only-button:hover {
+  border-bottom: 1px solid currentColor;
+}
+
+.text-only-button:active {
+  background-color: shade(currentColor, 2.3);
+}
+
+.text-only-button:backdrop {
+  background-color: transparent;
+}
+*/

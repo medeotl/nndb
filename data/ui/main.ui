@@ -16,6 +16,9 @@
             <property name="can_focus">False</property>
             <property name="margin_right">12</property>
             <property name="pixbuf">../cover/nat001.jpg</property>
+            <style>
+              <class name="cover"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -232,9 +235,6 @@
             <property name="left_attach">3</property>
             <property name="top_attach">8</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
         <child>
           <placeholder/>

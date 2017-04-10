@@ -1,36 +1,24 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# prima interazione con sqlite3: otteniamo la versione di sqlite3
-
 
 import sqlite3 as lite
-import sys
+from pathlib import Path # per verificare se esiste file db
 
-con = None
+db_name = "test.db"
+my_db = Path("./" + db_name)
 
-try:
-    con = lite.connect('test.db') 
+if my_db.is_file():
+    # il file esiste
+    conn = lite.connect(db_name) 
 
-    cur = con.cursor()
-    cur.execute('SELECT SQLITE_VERSION()')
+    c = conn.cursor()
+    c.execute('SELECT SQLITE_VERSION()')
 
-    data = cur.fetchone()
+    data = c.fetchone()
 
-    print "SQLite version: %s" % data
+    print( "SQLite version: {}".format(data) )
 
-except lite.Error, e:
-
-    print "Error %s:" % e.args[0]
-    sys.exit(1)
-
-finally:
-
-    if con: # se il valore di con è *ritenuto* vero
-        con.close() 
-
-# Nota finale: "if variabile" è equivalente a "if variabile is True"
-# a seconda del tipo di variabile, il suo valore può essere o meno equivalente
-# a False
-# nel nostro caso, None è equivalente a False
-# anche 0 (numero), e le sequenze vuote ([],'', etc) sono equivalenti a False
-# riferimenti:  http://docs.python.org/library/stdtypes.html
+    conn.close()
+    
+else:
+    print( "File {} non esistente".format(db_name) )

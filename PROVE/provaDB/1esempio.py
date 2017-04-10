@@ -17,7 +17,7 @@ if my_db.is_file():
 
     data = c.fetchone()
 
-    print( "SQLite version: {}".format(data) )
+    print( "SQLite version: {}".format(data[0]) )
 
     conn.close()
     

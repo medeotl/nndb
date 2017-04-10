@@ -23,4 +23,7 @@ else:
 
 # Nota: l'uso di with ci permette di delegare a python il rilascio della 
 #       risorsa ( conn.close() ) e la gestione degli errori.
+#       Inoltre le modifiche al db sono salvate ( conn.commit() ) 
+#       automaticamente (vedi esempio successivo)
+#
 #       riferimento: http://effbot.org/zone/python-with-statement.htm

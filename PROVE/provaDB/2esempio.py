@@ -1,24 +1,26 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # otteniamo la versione di sqlite3 usando with
 
 import sqlite3 as lite
-#~ import sys # non serve più 
+from pathlib import Path # per verificare se esiste file db
 
-conn = lite.connect('test.db')
+db_name = "test.db"
+my_db = Path("./" + db_name)
 
-with conn:
+if my_db.is_file():
+    with lite.connect('test.db') as conn:
 
-    c = conn.cursor()
-    c.execute('SELECT SQLITE_VERSION()')
+        c = conn.cursor()
+        c.execute('SELECT SQLITE_VERSION()')
 
-    data = c.fetchone()
+        data = c.fetchone()
 
-    print "SQLite version: %s" % data
+        print( "SQLite version: " + str(data[0]) )
+else:
+    print( "File {} non esistente".format(db_name) )
+        
 
-# Nota1: lite.connect() se non trova il db lo crea (non genera errore, lo 
-#        fa in altri casi, tipo se il disco è pieno)
-#
-# Nota2: l'uso di with ci permette di delegare a python il rilascio della 
-#        risorsa ( conn.close() ) e la gestione degli errori.
-#        riferimento: http://effbot.org/zone/python-with-statement.htm
+# Nota: l'uso di with ci permette di delegare a python il rilascio della 
+#       risorsa ( conn.close() ) e la gestione degli errori.
+#       riferimento: http://effbot.org/zone/python-with-statement.htm

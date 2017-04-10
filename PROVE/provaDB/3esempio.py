@@ -3,7 +3,6 @@
 # creiamo e popoliamo una tabella
 
 import sqlite3 as lite
-import sys
 
 con = lite.connect('test.db')
 

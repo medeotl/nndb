@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # creiamo e popoliamo una tabella
 
@@ -22,4 +22,3 @@ with con:
 
 # Nota: Using the with keyword the changes are automatically committed. 
 #       Otherwise, we would have to commit them manually ( con.commit() )
-

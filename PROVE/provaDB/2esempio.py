@@ -3,16 +3,16 @@
 # otteniamo la versione di sqlite3 usando with
 
 import sqlite3 as lite
-import sys # non usato 
+#~ import sys # non serve più 
 
-con = lite.connect('test.db')
+conn = lite.connect('test.db')
 
-with con:
+with conn:
 
-    cur = con.cursor()
-    cur.execute('SELECT SQLITE_VERSION()')
+    c = conn.cursor()
+    c.execute('SELECT SQLITE_VERSION()')
 
-    data = cur.fetchone()
+    data = c.fetchone()
 
     print "SQLite version: %s" % data
 
@@ -20,5 +20,5 @@ with con:
 #        fa in altri casi, tipo se il disco è pieno)
 #
 # Nota2: l'uso di with ci permette di delegare a python il rilascio della 
-#        risorsa ( con.close() ) e la gestione degli errori.
+#        risorsa ( conn.close() ) e la gestione degli errori.
 #        riferimento: http://effbot.org/zone/python-with-statement.htm

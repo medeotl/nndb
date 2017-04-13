@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # creiamo e popoliamo una tabella ( c.execute() )
 
-import sqlite3 as lite
+import sqlite3
 
-conn = lite.connect('test.db')
+conn = sqlite3.connect('test.db')
 
 with conn:
 

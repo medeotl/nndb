@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # prima interazione con sqlite3: otteniamo la versione di sqlite3
 
-import sqlite3 as lite
+import sqlite3
 from pathlib import Path # per verificare se esiste file db
 
 db_name = "test.db"
@@ -10,7 +10,7 @@ my_db = Path("./" + db_name)
 
 if my_db.is_file():
     # il file esiste
-    conn = lite.connect(db_name) 
+    conn = sqlite3.connect(db_name) 
 
     c = conn.cursor()
     c.execute('SELECT SQLITE_VERSION()')

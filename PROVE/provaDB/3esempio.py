@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# creiamo e popoliamo una tabella
+# creiamo e popoliamo una tabella ( c.execute() )
 
 import sqlite3 as lite
 
@@ -19,5 +19,5 @@ with conn:
     c.execute("INSERT INTO Cars VALUES(7, 'Hummer', 41400)")
     c.execute("INSERT INTO Cars VALUES(8, 'Volkswagen', 21600)")
 
-# Nota: Using the with keyword the changes are automatically committed. 
+# Nota: Using the with keyword the *changes* are automatically committed. 
 #       Otherwise, we would have to commit them manually ( conn.commit() )

@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 #
 # memorizzo le righe in dizionari invece che in tuple

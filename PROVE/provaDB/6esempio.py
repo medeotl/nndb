@@ -1,5 +1,6 @@
 #! /usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # * uso di lastrowid
 # * creazione in memoria di un database
 # * chiave primaria e suo autoincremento

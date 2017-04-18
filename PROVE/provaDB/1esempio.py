@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+# 
 # prima interazione con sqlite3: otteniamo la versione di sqlite3
 
 import sqlite3

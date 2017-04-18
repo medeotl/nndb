@@ -1,5 +1,6 @@
 #! /usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # primo esempio di prelevamento dati dal db
 # uso di cur.fetchall() che ritorna una tupla di tuple
 

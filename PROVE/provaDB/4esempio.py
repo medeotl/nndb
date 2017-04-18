@@ -1,5 +1,6 @@
 #! usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # popoliamo la tabella usando cursor.executemany()
 
 import sqlite3 as lite

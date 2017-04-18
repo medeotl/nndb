@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+# 
 # creiamo e popoliamo una tabella ( c.execute() )
 
 import sqlite3

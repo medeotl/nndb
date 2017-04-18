@@ -1,5 +1,6 @@
 #! /usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # uso di cur.fetchone()
 
 import sqlite3 as lite

@@ -1,5 +1,6 @@
 #! /usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # uso di executescript() e gestione manuale degli errori ( con.rollback() )
 
 import sqlite3 as lite

@@ -1,5 +1,6 @@
 #! /usr/bin/python2
 # -*- coding: utf-8 -*-
+#
 # memorizzo le righe in dizionari invece che in tuple
 # in questo modo per riferirmi ai dati posso usare il nome delle colonne 
 
@@ -18,4 +19,3 @@ with con:
 
     for row in rows:
         print "%s %s %s" % (row["Id"], row["Name"], row["Price"])
-

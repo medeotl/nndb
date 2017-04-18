@@ -10,7 +10,7 @@ db_name = "test.db"
 my_db = Path("./" + db_name)
 
 if my_db.is_file():
-    with sqlite3.connect('test.db') as conn:
+    with sqlite3.connect(db_name) as conn:
 
         c = conn.cursor()
         c.execute('SELECT SQLITE_VERSION()')

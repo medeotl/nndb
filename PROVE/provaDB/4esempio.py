@@ -1,9 +1,9 @@
 #! usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# popoliamo la tabella usando cursor.executemany()
+# popoliamo la tabella usando c.executemany()
 
-import sqlite3 as lite
+import sqlite3
 
 cars = (
     (1, 'Audi', 52642),
@@ -15,13 +15,13 @@ cars = (
     (7, 'Volkswagen', 21600)
 )
 
-con = lite.connect('test.db')
-with con:
+conn = sqlite3.connect('test.db')
+with conn:
 
-    cur = con.cursor()
+    c = conn.cursor()
 
     # Eliminiamo la tabella Cars se presente
-    cur.execute("DROP TABLE IF EXISTS Cars")
+    c.execute("DROP TABLE IF EXISTS Cars")
 
-    cur.execute("CREATE TABLE Cars(Id INT, Name TEXT, Price INT)")
-    cur.executemany("INSERT INTO Cars VALUES(?, ?, ?)", cars)
+    c.execute("CREATE TABLE Cars(Id INT, Name TEXT, Price INT)")
+    c.executemany("INSERT INTO Cars VALUES(?, ?, ?)", cars)

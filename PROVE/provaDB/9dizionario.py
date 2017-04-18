@@ -4,18 +4,18 @@
 # memorizzo le righe in dizionari invece che in tuple
 # in questo modo per riferirmi ai dati posso usare il nome delle colonne 
 
-import sqlite3 as lite
+import sqlite3
 
-con = lite.connect('test.db')
+conn = sqlite3.connect('test.db')
 
-with con:
+with conn:
 
-    con.row_factory = lite.Row  #le righe saranno dizionari
+    conn.row_factory = sqlite3.Row  #le righe saranno dizionari
 
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Cars")
+    c = conn.cursor()
+    c.execute("SELECT * FROM Cars")
 
-    rows = cur.fetchall()
+    rows = c.fetchall()
 
     for row in rows:
         print "%s %s %s" % (row["Id"], row["Name"], row["Price"])

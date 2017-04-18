@@ -1,17 +1,17 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# uso di executescript() e gestione manuale degli errori ( con.rollback() )
+# uso di executescript() e gestione manuale degli errori ( conn.rollback() )
 
-import sqlite3 as lite
+import sqlite3
 import sys
 
 try:
-    con = lite.connect("test.db")
+    conn = sqlite3.connect("test.db")
 
-    cur = con.cursor()
+    c = conn.cursor()
 
-    cur.executescript("""
+    c.executescript("""
         DROP TABLE IF EXISTS Cars;
         CREATE TABLE Cars(Id INT, Name TEXT, Price INT);
         INSERT INTO Cars VALUES(1, 'Audi', 52642);
@@ -24,17 +24,17 @@ try:
         INSERT INTO Cars VALUES(8, 'Volkswagen', 21600);
         """)
 
-    con.commit()
+    conn.commit()
 
-except lite.Error, e:
+except sqlite3.Error, e:
 
-    if con:
-        con.rollback() #N.B. annullo le modifiche
+    if conn:
+        conn.rollback() #N.B. annullo le modifiche
 
     print "Error %s:" % e.args[0]
     sys.exit(1)
 
 finally:
 
-    if con:
-        con.close() # chiudo il db
+    if conn:
+        conn.close() # chiudo il db

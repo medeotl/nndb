@@ -5,20 +5,20 @@
 # * creazione in memoria di un database
 # * chiave primaria e suo autoincremento
 
-import sqlite3 as lite
+import sqlite3
 
-con = lite.connect(':memory:') #
+conn = sqlite3.connect(':memory:') #
 
-with con:
+with conn:
 
-    cur = con.cursor()
-    cur.execute("CREATE TABLE Friends(Id INTEGER PRIMARY KEY, Name TEXT);")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Tom');")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Rebecca')") # no ;
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Jim');")
-    cur.execute("INSERT INTO Friends(Name) VALUES ('Robert');")
+    c = conn.cursor()
+    c.execute("CREATE TABLE Friends(Id INTEGER PRIMARY KEY, Name TEXT);")
+    c.execute("INSERT INTO Friends(Name) VALUES ('Tom');")
+    c.execute("INSERT INTO Friends(Name) VALUES ('Rebecca')") # no ;
+    c.execute("INSERT INTO Friends(Name) VALUES ('Jim');")
+    c.execute("INSERT INTO Friends(Name) VALUES ('Robert');")
 
-    lid = cur.lastrowid
+    lid = c.lastrowid
     print "The last Id of the inserted row is %d" % lid
 
 # Nota: in questo esercizio l'autore ha messo il ";" finale alle query SQL

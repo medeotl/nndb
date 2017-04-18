@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 #
 # primo esempio di prelevamento dati dal db
-# uso di cur.fetchall() che ritorna una tupla di tuple
+# uso di c.fetchall() che ritorna una tupla di tuple
 
-import sqlite3 as lite
+import sqlite3
 
-con = lite.connect('test.db')
+conn = sqlite3.connect('test.db')
 
-with con:
+with conn:
 
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Cars")
+    c = conn.cursor()
+    c.execute("SELECT * FROM Cars")
 
-    rows = cur.fetchall()
+    rows = c.fetchall()
 
     for row in rows:
         print row

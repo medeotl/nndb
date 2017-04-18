@@ -1,20 +1,20 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# uso di cur.fetchone()
+# uso di c.fetchone()
 
-import sqlite3 as lite
+import sqlite3
 
-con = lite.connect("test.db")
+conn = sqlite3.connect("test.db")
 
-with con:
+with conn:
 
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Cars")
+    c = conn.cursor()
+    c.execute("SELECT * FROM Cars")
 
     while True:
         
-        row = cur.fetchone()
+        row = c.fetchone()
 
         if row == None:
             break

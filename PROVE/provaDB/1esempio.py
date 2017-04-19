@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # 
-# prima interazione con sqlite3: otteniamo la versione di sqlite3
+# otteniamo la versione di sqlite3
+# verifichiamo esistenza file db prima di aprirlo
+
 
 import sqlite3
 from pathlib import Path # per verificare se esiste file db

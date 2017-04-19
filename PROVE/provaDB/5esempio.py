@@ -26,12 +26,12 @@ try:
 
     conn.commit()
 
-except sqlite3.Error, e:
+except sqlite3.Error as e:
 
     if conn:
         conn.rollback() #N.B. annullo le modifiche
 
-    print "Error %s:" % e.args[0]
+    print ("Error %s:" % e.args[0])
     sys.exit(1)
 
 finally:

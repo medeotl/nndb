@@ -19,4 +19,4 @@ with conn:
         if row == None:
             break
         
-        print row[0], row[1], row[2]
+        print ( row[0], row[1], row[2] )

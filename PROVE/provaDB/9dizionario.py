@@ -18,4 +18,4 @@ with conn:
     rows = c.fetchall()
 
     for row in rows:
-        print "%s %s %s" % (row["Id"], row["Name"], row["Price"])
+        print( "%s %s %s" % (row["Id"], row["Name"], row["Price"]) )

@@ -44,7 +44,7 @@ class EntryWindow(Gtk.Window):
     #nf
     def print_key_pressed(self, widget, eventKey):
         #print type(widget)
-        print eventKey.string
+        print (eventKey.string)
         if eventKey.string == "a":
             widget.set_text("ricominciamo")
     

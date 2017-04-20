@@ -1,3 +1,9 @@
+# key: numero albo serie regolare
+# value: Titolo, Soggettisti, Sceneggiatori, Disegnatori, Copertinista
+#
+# in caso di autori multipli questi sono separati da virgole all'interno della
+# stringa che li include.
+
 db = {
     1 : ("Agente Speciale Alfa",
          "Antonio Serra", 

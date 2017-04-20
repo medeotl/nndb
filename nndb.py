@@ -89,7 +89,7 @@ builder = Gtk.Builder()
 builder.add_from_file( GUI )
 builder.connect_signals( Handler() )
 
-window = builder.get_object( "window1" )
+window = builder.get_object( "window" )
 window.set_title("1 - " + db[1][0])
 window.show_all()
 

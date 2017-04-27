@@ -44,12 +44,16 @@ class Handler:
         icon_remove = Gtk.Image()
         icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
         btn_remove.set_image( icon_remove )
+        btn_remove.connect("clicked", self.remove_entry)
 
         btnbox.pack_end(entry, True, True, 0)
         btnbox.pack_end(btn_remove, True, True, 0)
 
         vbox.pack_end( btnbox, True, True, 0 )
 
+    def remove_entry(self, btn):
+        btnbox = btn.get_parent()
+        btnbox.destroy()
 
 
 builder = Gtk.Builder()

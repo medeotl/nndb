@@ -8,30 +8,18 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkWindow">
+  <object class="GtkEntryCompletion" id="autorientrycompletion"/>
+  <object class="GtkEntryCompletion" id="disegnatorientrycompletion"/>
+  <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="border_width">18</property>
+    <signal name="delete-event" handler="onDeleteWindow" swapped="no"/>
     <child>
-      <object class="GtkGrid">
+      <object class="GtkGrid" id="grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="row_spacing">6</property>
-        <property name="column_spacing">2</property>
-        <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">Inserisci e vai all'albo successivo</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <property name="margin_top">6</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-            <property name="width">9</property>
-          </packing>
-        </child>
+        <property name="column_spacing">6</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
@@ -63,38 +51,14 @@
           <packing>
             <property name="left_attach">2</property>
             <property name="top_attach">0</property>
-            <property name="width">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Sceneggiatura</property>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">0</property>
-            <property name="width">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Disegni</property>
-          </object>
-          <packing>
-            <property name="left_attach">6</property>
-            <property name="top_attach">0</property>
-            <property name="width">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="titolo">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_right">6</property>
+            <property name="valign">start</property>
+            <property name="margin_right">2</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -102,43 +66,102 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkSpinButton" id="albo">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="valign">start</property>
+            <property name="margin_right">2</property>
+            <property name="adjustment">adjustment1</property>
+            <property name="value">1</property>
+            <signal name="value-changed" handler="onAlboChange" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">4</property>
+            <property name="left_attach">0</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkButton">
+            <property name="label" translatable="yes">Inserisci e vai all'albo successivo</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="margin_top">6</property>
+            <signal name="clicked" handler="insert" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">6</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+            <property name="width">8</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Copertina</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkButtonBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkEntry" id="soggetto">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="completion">autorientrycompletion</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="always_show_image">True</property>
+                    <signal name="clicked" handler="add_soggettista" swapped="no"/>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_name">list-add</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                    <property name="non_homogeneous">True</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="left_attach">8</property>
-            <property name="top_attach">0</property>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="sceneggiatura">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="valign">start</property>
           </object>
           <packing>
-            <property name="left_attach">8</property>
+            <property name="left_attach">3</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -147,7 +170,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_right">6</property>
+            <property name="valign">start</property>
+            <property name="margin_right">2</property>
             <property name="always_show_image">True</property>
             <child>
               <object class="GtkImage">
@@ -156,6 +180,18 @@
                 <property name="icon_name">list-add</property>
               </object>
             </child>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="disegni">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">start</property>
+            <property name="completion">disegnatorientrycompletion</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -167,7 +203,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_right">6</property>
+            <property name="valign">start</property>
+            <property name="margin_right">2</property>
             <property name="always_show_image">True</property>
             <child>
               <object class="GtkImage">
@@ -176,6 +213,17 @@
                 <property name="icon_name">list-add</property>
               </object>
             </child>
+          </object>
+          <packing>
+            <property name="left_attach">6</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="copertina">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">start</property>
           </object>
           <packing>
             <property name="left_attach">7</property>
@@ -183,46 +231,38 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton">
+          <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="margin_right">6</property>
-            <property name="adjustment">adjustment1</property>
-            <property name="value">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="margin_right">6</property>
-            <property name="always_show_image">True</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">list-add</property>
-              </object>
-            </child>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Sceneggiatura</property>
           </object>
           <packing>
             <property name="left_attach">3</property>
-            <property name="top_attach">1</property>
+            <property name="top_attach">0</property>
+            <property name="width">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Disegni</property>
           </object>
           <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">5</property>
+            <property name="top_attach">0</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Copertina</property>
+          </object>
+          <packing>
+            <property name="left_attach">7</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
       </object>

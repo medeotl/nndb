@@ -41,7 +41,9 @@ class Handler:
 
         entry = Gtk.Entry(visible=True)
         btn_remove = Gtk.Button(visible=True)
-        btn_remove.set_image( Gtk.Image.set_from_icon_name("list-remove") )
+        icon_remove = Gtk.Image()
+        icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
+        btn_remove.set_image( icon_remove )
 
         btnbox.pack_end(entry, True, True, 0)
         btnbox.pack_end(btn_remove, True, True, 0)

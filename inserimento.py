@@ -13,16 +13,20 @@ class Handler:
     def onAlboChange(self, spinBtn):
         albo = spinBtn.get_value_as_int()
         titolo = builder.get_object("titolo")
-        soggetto = builder.get_object("soggetto")
-        sceneggiatura = builder.get_object("sceneggiatura")
-        disegni = builder.get_object("disegni")
-        copertina = builder.get_object("copertina")
+        soggetto = builder.get_object("soggettisti")
+        sceneggiatura = builder.get_object("sceneggiatori")
+        disegni = builder.get_object("disegnatori")
+        copertina = builder.get_object("copertinista")
 
         if albo in db:
-            titolo.set_text(       db[albo][0])
-            soggetto.set_text(     db[albo][1])
-            sceneggiatura.set_text(db[albo][2])
-            disegni.set_text(      db[albo][3])
+            titolo.set_text( db[albo][0] )
+            soggetto_entry = soggetto.get_children()[0].get_children()[0]
+            soggetto_entry.set_text( db[albo][1] )
+            sceneggiatura_entry = \
+                sceneggiatura.get_children()[0].get_children()[0]
+            sceneggiatura_entry.set_text(db[albo][2])
+            disegni_entry = disegni.get_children()[0].get_children()[0]
+            disegni_entry.set_text(      db[albo][3])
             copertina.set_text(    db[albo][4])
         else:
             titolo.set_text("")

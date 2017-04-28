@@ -58,6 +58,7 @@ class Handler:
     def remove_entry(self, btn):
         btnbox = btn.get_parent()
         btnbox.destroy()
+        window.resize(1, 1)
 
 
 builder = Gtk.Builder()

@@ -43,11 +43,15 @@ class Handler:
         btn_remove = Gtk.Button(visible=True)
         icon_remove = Gtk.Image()
         icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
+        
         btn_remove.set_image( icon_remove )
         btn_remove.connect("clicked", self.remove_entry)
 
         btnbox.pack_end(entry, True, True, 0)
         btnbox.pack_end(btn_remove, True, True, 0)
+        btnbox.child_set_property(btn_remove,"non-homogeneous", True)
+        btn_remove.set_halign (Gtk.Align.CENTER)
+        btn_remove.valign = Gtk.Align.CENTER
 
         vbox.pack_end( btnbox, True, True, 0 )
 

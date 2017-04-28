@@ -35,7 +35,7 @@ class Handler:
         spinBtn = builder.get_object("albo")
         spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
 
-    def add_soggettista(self, btn):
+    def add_entry(self, btn):
         vbox = btn.get_parent().get_parent()
         btnbox = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
 

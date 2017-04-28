@@ -37,10 +37,10 @@ class Handler:
 
     def add_soggettista(self, btn):
         vbox = btn.get_parent().get_parent()
-        btnbox = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL, visible=True)
+        btnbox = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
 
-        entry = Gtk.Entry(visible=True)
-        btn_remove = Gtk.Button(visible=True)
+        entry = Gtk.Entry()
+        btn_remove = Gtk.Button()
         icon_remove = Gtk.Image()
         icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
         
@@ -54,6 +54,7 @@ class Handler:
         btn_remove.valign = Gtk.Align.CENTER
 
         vbox.pack_end( btnbox, True, True, 0 )
+        vbox.show_all()
 
     def remove_entry(self, btn):
         btnbox = btn.get_parent()

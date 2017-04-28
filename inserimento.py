@@ -51,7 +51,7 @@ class Handler:
         btn_remove.set_image( icon_remove )
         btn_remove.connect("clicked", self.remove_entry)
 
-        btnbox.pack_end(entry, True, True, 0)
+        btnbox.pack_start(entry, True, True, 0)
         btnbox.pack_end(btn_remove, True, True, 0)
         btnbox.child_set_property(btn_remove,"non-homogeneous", True)
         btn_remove.set_halign (Gtk.Align.CENTER)

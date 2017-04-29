@@ -37,6 +37,12 @@ class Handler:
 
     def insert(self, btn):
         spinBtn = builder.get_object("albo")
+        # prelevo dati albo e li visualizzo nel terminale
+        titolo = builder.get_object("titolo")
+        print( titolo.get_text() )
+        soggetto = builder.get_object("soggettisti")
+        for item in soggetto.get_children():
+            print( item.get_children()[0].get_text() )
         spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
 
     def add_entry(self, btn):

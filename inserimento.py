@@ -5,6 +5,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from database import db
+import sqlite3
 
 class Handler:
     def onDeleteWindow(self, *args):
@@ -43,7 +44,9 @@ class Handler:
         soggetto = builder.get_object("soggettisti")
         for item in soggetto.get_children():
             print( item.get_children()[0].get_text() )
+            print( item.get_children()[0].get_completion() )
         spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
+
 
     def add_entry(self, btn):
         vbox = btn.get_parent().get_parent()
@@ -53,7 +56,7 @@ class Handler:
         btn_remove = Gtk.Button()
         icon_remove = Gtk.Image()
         icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
-        
+
         btn_remove.set_image( icon_remove )
         btn_remove.connect("clicked", self.remove_entry)
 
@@ -70,6 +73,32 @@ class Handler:
         btnbox = btn.get_parent()
         btnbox.destroy()
         window.resize(1, 1)
+
+# costruisco lista *autori* per autocompletamento
+conn = sqlite3.connect('./data/nn.db')
+
+with conn:
+
+    c = conn.cursor()
+    c.execute("""SELECT nome, cognome
+                 FROM autori
+                 WHERE tipo = 1 OR tipo = 3""")
+
+    lista_autori = c.fetchall()
+
+    for row in lista_autori:
+        print (row)
+
+# costruisco lista *disegnatori* per autocompletamento
+    c.execute("""SELECT nome, cognome
+                 FROM autori
+                 WHERE tipo = 2 OR tipo = 3""")
+
+    lista_disegnatori = c.fetchall()
+
+    for row in lista_disegnatori:
+        print (row)
+
 
 
 builder = Gtk.Builder()

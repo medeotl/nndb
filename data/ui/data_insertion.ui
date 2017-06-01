@@ -8,8 +8,16 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkEntryCompletion" id="autorientrycompletion"/>
-  <object class="GtkEntryCompletion" id="disegnatorientrycompletion"/>
+  <object class="GtkEntryCompletion" id="disegnatori_completion"/>
+  <object class="GtkListStore" id="store">
+    <columns>
+      <!-- column-name nome_cognome -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkEntryCompletion" id="autori_completion">
+    <property name="model">store</property>
+  </object>
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="border_width">18</property>
@@ -111,7 +119,7 @@
                   <object class="GtkEntry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="completion">autorientrycompletion</property>
+                    <property name="completion">autori_completion</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -278,7 +286,7 @@
                   <object class="GtkEntry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="completion">disegnatorientrycompletion</property>
+                    <property name="completion">disegnatori_completion</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>

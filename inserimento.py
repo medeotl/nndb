@@ -49,13 +49,15 @@ class Handler:
 
 
     def add_entry(self, btn):
+        """ carica un entry aggiuntiva (per autori multipli) """
         vbox = btn.get_parent().get_parent()
         btnbox = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
 
         entry = Gtk.Entry()
         btn_remove = Gtk.Button()
         icon_remove = Gtk.Image()
-        icon_remove.set_from_icon_name("list-remove", Gtk.IconSize.BUTTON)
+        icon_remove.set_from_icon_name(
+            "list-remove", Gtk.IconSize.BUTTON)
 
         btn_remove.set_image( icon_remove )
         btn_remove.connect("clicked", self.remove_entry)
@@ -70,11 +72,19 @@ class Handler:
         vbox.show_all()
 
     def remove_entry(self, btn):
+        """ rimuove l'entry aggiuntiva (per autori multipli) """
         btnbox = btn.get_parent()
         btnbox.destroy()
         window.resize(1, 1)
 
-# costruisco lista *autori* per autocompletamento
+builder = Gtk.Builder()
+builder.add_from_file("./data/ui/data_insertion.ui")
+builder.connect_signals( Handler() )
+
+# costruisco lista *scrittori* per autocompletamento
+s_store = builder.get_object("scrittori_store")
+s_entry = builder.get_object("soggetto_entry")
+s_completion = Gtk.EntryCompletion()
 conn = sqlite3.connect('./data/nn.db')
 
 with conn:
@@ -86,24 +96,25 @@ with conn:
 
     lista_autori = c.fetchall()
 
-    for row in lista_autori:
-        print (row)
+    for autore in lista_autori:
+        autore = autore[0] + " " + autore[1]
+        iter = s_store.append()
+        s_store.set(iter, 0, autore)
+
+    s_entry.set_completion(s_completion)
+    s_completion.set_model(s_store)
+    s_completion.set_text_column(0)
+
 
 # costruisco lista *disegnatori* per autocompletamento
-    c.execute("""SELECT nome, cognome
-                 FROM autori
-                 WHERE tipo = 2 OR tipo = 3""")
-
-    lista_disegnatori = c.fetchall()
-
-    for row in lista_disegnatori:
-        print (row)
-
-
-
-builder = Gtk.Builder()
-builder.add_from_file("./data/ui/data_insertion.ui")
-builder.connect_signals( Handler() )
+#    c.execute("""SELECT nome, cognome
+#                 FROM autori
+#                 WHERE tipo = 2 OR tipo = 3""")
+#
+#    lista_disegnatori = c.fetchall()
+#
+#    for row in lista_disegnatori:
+#        print (row)
 
 window = builder.get_object("window")
 window.show_all()

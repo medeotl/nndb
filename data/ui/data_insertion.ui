@@ -8,11 +8,6 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkEntryCompletion" id="autori_completion">
-    <property name="minimum_key_length">3</property>
-    <property name="text_column">0</property>
-  </object>
-  <object class="GtkEntryCompletion" id="disegnatori_completion"/>
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="border_width">18</property>
@@ -216,7 +211,7 @@
                 <property name="valign">start</property>
                 <property name="layout_style">start</property>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="sceneggiatura_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -277,10 +272,9 @@
                 <property name="valign">start</property>
                 <property name="layout_style">start</property>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="disegni_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="completion">disegnatori_completion</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -329,17 +323,5 @@
     <child type="titlebar">
       <placeholder/>
     </child>
-  </object>
-  <object class="GtkListStore" id="disegnatori_store">
-    <columns>
-      <!-- column-name nomecognome -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkListStore" id="scrittori_store">
-    <columns>
-      <!-- column-name nomecognome -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

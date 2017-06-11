@@ -81,14 +81,14 @@ builder = Gtk.Builder()
 builder.add_from_file("./data/ui/data_insertion.ui")
 builder.connect_signals( Handler() )
 
-# costruisco lista *scrittori* per autocompletamento
-s_store = builder.get_object("scrittori_store")
-s_entry = builder.get_object("soggetto_entry")
-s_completion = Gtk.EntryCompletion()
-conn = sqlite3.connect('./data/nn.db')
+# costruisco lista *scrittori* e *disegnatori* per autocompletamento
+scrittori_store = Gtk.ListStore(str)
+disegnatori_store = Gtk.ListStore(str)
 
+conn = sqlite3.connect('./data/nn.db')
 with conn:
 
+    # AUTORI (soggettisti e sceneggiatori)
     c = conn.cursor()
     c.execute("""SELECT nome, cognome
                  FROM autori
@@ -98,23 +98,37 @@ with conn:
 
     for autore in lista_autori:
         autore = autore[0] + " " + autore[1]
-        iter = s_store.append()
-        s_store.set(iter, 0, autore)
+        iter = scrittori_store.append()
+        scrittori_store.set(iter, 0, autore)
 
-    s_entry.set_completion(s_completion)
-    s_completion.set_model(s_store)
-    s_completion.set_text_column(0)
+    # DISEGNATORI
+    c.execute("""SELECT nome, cognome
+                 FROM autori
+                 WHERE tipo = 2 OR tipo = 3""")
 
+    lista_disegnatori = c.fetchall()
 
-# costruisco lista *disegnatori* per autocompletamento
-#    c.execute("""SELECT nome, cognome
-#                 FROM autori
-#                 WHERE tipo = 2 OR tipo = 3""")
-#
-#    lista_disegnatori = c.fetchall()
-#
-#    for row in lista_disegnatori:
-#        print (row)
+    for disegnatore in lista_disegnatori:
+        disegnatore = disegnatore[0] + " " + disegnatore[1]
+        iter = disegnatori_store.append()
+        disegnatori_store.set(iter, 0, disegnatore)
+
+sogg_entry = builder.get_object("soggetto_entry")
+scen_entry = builder.get_object("sceneggiatura_entry")
+dis_entry = builder.get_object("disegni_entry")
+sogg_completion = Gtk.EntryCompletion()
+scen_completion = Gtk.EntryCompletion()
+dis_completion = Gtk.EntryCompletion()
+
+sogg_entry.set_completion(sogg_completion)
+scen_entry.set_completion(scen_completion)
+dis_entry.set_completion(dis_completion)
+sogg_completion.set_model(scrittori_store)
+scen_completion.set_model(scrittori_store)
+dis_completion.set_model(disegnatori_store)
+sogg_completion.set_text_column(0)
+scen_completion.set_text_column(0)
+dis_completion.set_text_column(0)
 
 window = builder.get_object("window")
 window.show_all()

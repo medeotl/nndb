@@ -81,9 +81,10 @@ builder = Gtk.Builder()
 builder.add_from_file("./data/ui/data_insertion.ui")
 builder.connect_signals( Handler() )
 
-# costruisco lista *scrittori* e *disegnatori* per autocompletamento
+# creo lista autori/disegnatori/copertinista per autocompletamento
 scrittori_store = Gtk.ListStore(str)
 disegnatori_store = Gtk.ListStore(str)
+copertinista_store = Gtk.ListStore(str)
 
 conn = sqlite3.connect('./data/nn.db')
 with conn:
@@ -113,26 +114,40 @@ with conn:
         iter = disegnatori_store.append()
         disegnatori_store.set(iter, 0, disegnatore)
 
+    # COPERTINISTI
+    lista_copertinisti = ("Claudio Castellini", "Roberto De Angelis",
+        "Sergio Giardo")
+    for copertinista in lista_copertinisti:
+        iter = copertinista_store.append()
+        copertinista_store.set(iter, 0, copertinista)
+
+
 sogg_entry = builder.get_object("soggetto_entry")
 scen_entry = builder.get_object("sceneggiatura_entry")
 dis_entry = builder.get_object("disegni_entry")
+cop_entry = builder.get_object("copertinista_entry")
+
 sogg_completion = Gtk.EntryCompletion()
 scen_completion = Gtk.EntryCompletion()
 dis_completion = Gtk.EntryCompletion()
+cop_completion = Gtk.EntryCompletion()
 
 sogg_entry.set_completion(sogg_completion)
 scen_entry.set_completion(scen_completion)
 dis_entry.set_completion(dis_completion)
+cop_entry.set_completion(cop_completion)
+
 sogg_completion.set_model(scrittori_store)
 scen_completion.set_model(scrittori_store)
 dis_completion.set_model(disegnatori_store)
+cop_completion.set_model(copertinista_store)
+
 sogg_completion.set_text_column(0)
 scen_completion.set_text_column(0)
 dis_completion.set_text_column(0)
+cop_completion.set_text_column(0)
 
 window = builder.get_object("window")
 window.show_all()
 
 Gtk.main()
-
-#FIXME non posso associare a soggetto e sceneggiatura la stessa EntryCompletion

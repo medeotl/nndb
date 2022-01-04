@@ -6,9 +6,9 @@
 
 db = {
     1 : ("Agente Speciale Alfa",
-         "Antonio Serra", 
-         "Antonio Serra", 
-         "Claudio Castellini", 
+         "Antonio Serra",
+         "Antonio Serra",
+         "Claudio Castellini",
          "Claudio Castellini"),
     2 : ("Il Monolito Nero",
          "Antonio Serra, Michele Medda, Bepi Vigna",
@@ -54,5 +54,10 @@ db = {
           "Bepi Vigna",
           "Bepi Vigna",
           "Dante Bastianoni",
-          "Claudio Castellini")
+          "Claudio Castellini"),
+    367 : ("Olympus",
+           "Michele Medda",
+           "Michele Medda",
+           "Massimiliano Bergamo",
+           "Sergio Giardo")
 }

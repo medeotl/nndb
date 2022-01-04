@@ -8,36 +8,17 @@ from database import db
 import sqlite3
 
 class Handler:
+
     def onDeleteWindow(self, *args):
         Gtk.main_quit(*args)
 
     def onAlboChange(self, spinBtn):
-        albo = spinBtn.get_value_as_int()
-        titolo = builder.get_object("titolo")
-        soggetto = builder.get_object("soggettisti")
-        sceneggiatura = builder.get_object("sceneggiatori")
-        disegni = builder.get_object("disegnatori")
-        copertina = builder.get_object("copertinista")
-
-        if albo in db:
-            titolo.set_text( db[albo][0] )
-            soggetto_entry = soggetto.get_children()[0].get_children()[0]
-            soggetto_entry.set_text( db[albo][1] )
-            sceneggiatura_entry = \
-                sceneggiatura.get_children()[0].get_children()[0]
-            sceneggiatura_entry.set_text(db[albo][2])
-            disegni_entry = disegni.get_children()[0].get_children()[0]
-            disegni_entry.set_text(      db[albo][3])
-            copertina.set_text(    db[albo][4])
-        else:
-            titolo.set_text("")
-            soggetto.set_text("")
-            sceneggiatura.set_text("")
-            disegni.set_text("")
-            copertina.set_text("")
+        """  """
+        pass
 
     def insert(self, btn):
-        spinBtn = builder.get_object("albo")
+        """ inserisco dati nel database e passo ad albo successivo """
+
         # prelevo dati albo e li visualizzo nel terminale
         titolo = builder.get_object("titolo")
         print( titolo.get_text() )
@@ -45,22 +26,22 @@ class Handler:
         for item in soggetto.get_children():
             print( item.get_children()[0].get_text() )
             print( item.get_children()[0].get_completion() )
+        spinBtn = builder.get_object("nro_albo")
         spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
 
 
     def add_entry(self, btn):
         """ carica un entry aggiuntiva (per autori multipli) """
         vbox = btn.get_parent().get_parent()
-        btnbox = Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL)
+        btnbox = Gtk.ButtonBox(orientation=Gtk.Orientation.HORIZONTAL)
 
         entry = Gtk.Entry()
         btn_remove = Gtk.Button()
         icon_remove = Gtk.Image()
-        icon_remove.set_from_icon_name(
-            "list-remove", Gtk.IconSize.BUTTON)
+        icon_remove.set_from_icon_name( "list-remove", Gtk.IconSize.BUTTON )
 
         btn_remove.set_image( icon_remove )
-        btn_remove.connect("clicked", self.remove_entry)
+        btn_remove.connect( "clicked", self.remove_entry )
 
         btnbox.pack_start(entry, True, True, 0)
         btnbox.pack_end(btn_remove, True, True, 0)
@@ -99,8 +80,8 @@ with conn:
 
     for autore in lista_autori:
         autore = autore[0] + " " + autore[1]
-        iter = scrittori_store.append()
-        scrittori_store.set(iter, 0, autore)
+        iteratore = scrittori_store.append()
+        scrittori_store.set(iteratore, 0, autore)
 
     # DISEGNATORI
     c.execute("""SELECT nome, cognome
@@ -111,15 +92,14 @@ with conn:
 
     for disegnatore in lista_disegnatori:
         disegnatore = disegnatore[0] + " " + disegnatore[1]
-        iter = disegnatori_store.append()
-        disegnatori_store.set(iter, 0, disegnatore)
+        iteratore = disegnatori_store.append()
+        disegnatori_store.set(iteratore, 0, disegnatore)
 
     # COPERTINISTI
-    lista_copertinisti = ("Claudio Castellini", "Roberto De Angelis",
-        "Sergio Giardo")
+    lista_copertinisti = ("Claudio Castellini", "Roberto De Angelis", "Sergio Giardo")
     for copertinista in lista_copertinisti:
-        iter = copertinista_store.append()
-        copertinista_store.set(iter, 0, copertinista)
+        iteratore = copertinista_store.append()
+        copertinista_store.set(iteratore, 0, copertinista)
 
 
 sogg_entry = builder.get_object("soggetto_entry")

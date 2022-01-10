@@ -17,7 +17,7 @@ class Handler:
         pass
 
     def insert(self, btn):
-        """ inserisco dati nel database e passo ad albo successivo """
+        """ inserisco i dati nel database e passo ad albo successivo """
 
         # prelevo dati albo e li visualizzo nel terminale
         titolo = builder.get_object("titolo")

@@ -102,10 +102,10 @@ with conn:
         copertinista_store.set(iteratore, 0, copertinista)
 
 
-sogg_entry = builder.get_object("soggetto_entry")
-scen_entry = builder.get_object("sceneggiatura_entry")
-dis_entry = builder.get_object("disegni_entry")
-cop_entry = builder.get_object("copertinista_entry")
+sogg_entry = builder.get_object("soggetto")
+scen_entry = builder.get_object("sceneggiatura")
+dis_entry = builder.get_object("disegni")
+cop_entry = builder.get_object("copertinista")
 
 sogg_completion = Gtk.EntryCompletion()
 scen_completion = Gtk.EntryCompletion()

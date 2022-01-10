@@ -171,17 +171,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="copertinista">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">start</property>
-          </object>
-          <packing>
-            <property name="left-attach">5</property>
-            <property name="top-attach">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkBox" id="sceneggiatori">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -299,6 +288,17 @@
           </object>
           <packing>
             <property name="left-attach">4</property>
+            <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="copertinista">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="valign">start</property>
+          </object>
+          <packing>
+            <property name="left-attach">5</property>
             <property name="top-attach">1</property>
           </packing>
         </child>

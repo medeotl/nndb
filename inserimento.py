@@ -20,13 +20,21 @@ class Handler:
         """ inserisco i dati nel database e passo ad albo successivo """
 
         # prelevo dati albo e li visualizzo nel terminale
-        titolo = builder.get_object("titolo")
-        print( titolo.get_text() )
-        soggetto = builder.get_object("soggettisti")
+        spinBtn = builder.get_object( "nro_albo" )
+        nro_albo = spinBtn.get_value_as_int()
+        titolo = builder.get_object( "titolo" ).get_text()
+        print( nro_albo, titolo )
+        soggetto = builder.get_object( "soggettisti" )
         for item in soggetto.get_children():
             print( item.get_children()[0].get_text() )
-            print( item.get_children()[0].get_completion() )
-        spinBtn = builder.get_object("nro_albo")
+        sceneggiatura = builder.get_object( "sceneggiatori" )
+        for item in sceneggiatura.get_children():
+            print( item.get_children()[0].get_text() )
+        disegnatori = builder.get_object( "disegnatori" )
+        for item in disegnatori.get_children():
+            print( item.get_children()[0].get_text() )
+        copertinista = builder.get_object( "copertinista" ).get_text()
+        print( copertinista)
         spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
 
 

@@ -5,7 +5,7 @@
 # stringa che li include.
 
 db = {
-    1 : ("Agente Speciale Alfa",
+    1 : ("Agente speciale Alfa",
          "Antonio Serra",
          "Antonio Serra",
          "Claudio Castellini",

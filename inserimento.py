@@ -77,7 +77,7 @@ class Handler:
         btn_remove.set_halign (Gtk.Align.CENTER)
         btn_remove.valign = Gtk.Align.CENTER
 
-        vbox.pack_end( btnbox, True, True, 0 )
+        vbox.pack_start( btnbox, True, True, 0 )
         vbox.show_all()
 
     def remove_entry(self, btn):

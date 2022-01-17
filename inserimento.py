@@ -54,6 +54,9 @@ class Handler:
         for item in disegnatori_childrens[1:]:
             self.remove_entry( item.get_children()[1] )
 
+        # imposto il focus alla entry del titolo
+        titolo.grab_focus()
+
 
     def add_entry(self, btn):
         """ carica un entry aggiuntiva (per autori multipli) """

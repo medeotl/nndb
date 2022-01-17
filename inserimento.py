@@ -20,22 +20,39 @@ class Handler:
         """ inserisco i dati nel database e passo ad albo successivo """
 
         # prelevo dati albo e li visualizzo nel terminale
-        spinBtn = builder.get_object( "nro_albo" )
-        nro_albo = spinBtn.get_value_as_int()
-        titolo = builder.get_object( "titolo" ).get_text()
-        print( nro_albo, titolo )
+        nro_albo = builder.get_object( "nro_albo" )
+        titolo = builder.get_object( "titolo" )
+        print( nro_albo.get_value_as_int(), titolo.get_text() )
         soggetto = builder.get_object( "soggettisti" )
-        for item in soggetto.get_children():
+        soggetto_childrens = soggetto.get_children()
+        for item in soggetto_childrens:
             print( item.get_children()[0].get_text() )
         sceneggiatura = builder.get_object( "sceneggiatori" )
-        for item in sceneggiatura.get_children():
+        sceneggiatura_childrens = sceneggiatura.get_children()
+        for item in sceneggiatura_childrens:
             print( item.get_children()[0].get_text() )
         disegnatori = builder.get_object( "disegnatori" )
-        for item in disegnatori.get_children():
+        disegnatori_childrens = disegnatori.get_children()
+        for item in disegnatori_childrens:
             print( item.get_children()[0].get_text() )
-        copertinista = builder.get_object( "copertinista" ).get_text()
-        print( copertinista)
-        spinBtn.spin(Gtk.SpinType.STEP_FORWARD, 1)
+        copertina = builder.get_object( "copertinista" )
+        print( copertina.get_text() )
+
+        # vado ad albo successivo
+        nro_albo.spin(Gtk.SpinType.STEP_FORWARD, 1)
+
+        # pulisco le entry principali (meno il copertinista, che solitamente resta uguale)
+        for entry in (titolo, sogg_entry, scen_entry, dis_entry):
+            entry.set_text("")
+
+        # rimuovo le eventuali sotto-entry di soggetto, sceneggiatura, disegni
+        sogg_entry.set_text( "" )
+        for item in soggetto_childrens[1:]:
+            self.remove_entry( item.get_children()[1] )
+        for item in sceneggiatura_childrens[1:]:
+            self.remove_entry( item.get_children()[1] )
+        for item in disegnatori_childrens[1:]:
+            self.remove_entry( item.get_children()[1] )
 
 
     def add_entry(self, btn):

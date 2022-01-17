@@ -60,6 +60,7 @@ class Handler:
 
     def add_entry(self, btn):
         """ carica un entry aggiuntiva (per autori multipli) """
+
         vbox = btn.get_parent().get_parent()
         btnbox = Gtk.ButtonBox(orientation=Gtk.Orientation.HORIZONTAL)
 

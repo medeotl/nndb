@@ -76,7 +76,6 @@ class Handler:
         btnbox.pack_end( btn_remove, True, True, 0 )
         btnbox.child_set_property( btn_remove, "non-homogeneous", True )
         btn_remove.set_halign( Gtk.Align.CENTER )
-        btn_remove.valign = Gtk.Align.CENTER
 
         vbox.pack_start( btnbox, True, True, 0 )
         vbox.show_all()

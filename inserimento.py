@@ -46,7 +46,6 @@ class Handler:
             entry.set_text( "" )
 
         # rimuovo le eventuali sotto-entry di soggetto, sceneggiatura, disegni
-        sogg_entry.set_text( "" )
         for item in soggetto_childrens[1:]:
             self.remove_entry( item.get_children()[1] )
         for item in sceneggiatura_childrens[1:]:

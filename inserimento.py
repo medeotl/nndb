@@ -56,7 +56,6 @@ class Handler:
         # imposto il focus alla entry del titolo
         titolo.grab_focus()
 
-
     def add_entry( self, btn ):
         """ carica un entry aggiuntiva (per autori multipli) """
 
@@ -102,7 +101,7 @@ with conn:
     c = conn.cursor()
     c.execute("""SELECT nome, cognome
                  FROM autori
-                 WHERE tipo = 1 OR tipo = 3""")
+                 WHERE tipo = 1 OR tipo = 3""") # 3 autore completo
 
     lista_autori = c.fetchall()
 
@@ -114,7 +113,7 @@ with conn:
     # DISEGNATORI
     c.execute("""SELECT nome, cognome
                  FROM autori
-                 WHERE tipo = 2 OR tipo = 3""")
+                 WHERE tipo = 2 OR tipo = 3""") # 3 autore completo
 
     lista_disegnatori = c.fetchall()
 

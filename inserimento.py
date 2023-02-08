@@ -19,24 +19,47 @@ class Handler:
     def insert( self, btn ):
         """ inserisco i dati nel database e passo ad albo successivo """
 
+        # creo classe di supporto per i miei dati
+        class Albo:
+            # numero (int)
+            # titolo (string)
+            # autori (list)
+            # sceneggiatori (list)
+            # disegnatori (list)
+            # copertinista (string)
+            pass
+
+        albo = Albo()
+        
         # prelevo dati albo e li visualizzo nel terminale
         nro_albo = builder.get_object( "nro_albo" )
+        albo.numero = nro_albo.get_value_as_int()
         titolo = builder.get_object( "titolo" )
-        print( nro_albo.get_value_as_int(), titolo.get_text() )
+        albo.titolo = titolo.get_text()
+        print( albo.numero, albo.titolo )
         soggetto = builder.get_object( "soggettisti" )
         soggetto_childrens = soggetto.get_children()
+        albo.autori = []
         for item in soggetto_childrens:
-            print( item.get_children()[0].get_text() )
+            albo.autori.append( item.get_children()[0].get_text() )
+        print( *albo.autori, sep=", " )
         sceneggiatura = builder.get_object( "sceneggiatori" )
         sceneggiatura_childrens = sceneggiatura.get_children()
+        albo.sceneggiatori = []
         for item in sceneggiatura_childrens:
-            print( item.get_children()[0].get_text() )
+            albo.sceneggiatori.append( item.get_children()[0].get_text() )
+        print( *albo.sceneggiatori, sep=", " )
         disegnatori = builder.get_object( "disegnatori" )
         disegnatori_childrens = disegnatori.get_children()
+        albo.disegnatori = []
         for item in disegnatori_childrens:
-            print( item.get_children()[0].get_text() )
+            albo.disegnatori.append( item.get_children()[0].get_text() )
+        print( *albo.disegnatori, sep=", " )
         copertina = builder.get_object( "copertinista" )
-        print( copertina.get_text() )
+        albo.copertinista = copertina.get_text()
+        print( albo.copertinista )
+
+        # salvo albo in database
 
         # vado ad albo successivo
         nro_albo.spin( Gtk.SpinType.STEP_FORWARD, 1 )

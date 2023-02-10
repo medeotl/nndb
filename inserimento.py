@@ -23,7 +23,7 @@ class Handler:
         class Albo:
             # numero (int)
             # titolo (string)
-            # autori (list)
+            # soggettisti (list)
             # sceneggiatori (list)
             # disegnatori (list)
             # copertinista (string)
@@ -39,10 +39,10 @@ class Handler:
         print( albo.numero, albo.titolo )
         soggetto = builder.get_object( "soggettisti" )
         soggetto_childrens = soggetto.get_children()
-        albo.autori = []
+        albo.soggettisti = []
         for item in soggetto_childrens:
-            albo.autori.append( item.get_children()[0].get_text() )
-        print( *albo.autori, sep=", " )
+            albo.soggettisti.append( item.get_children()[0].get_text() )
+        print( *albo.soggettisti, sep=", " )
         sceneggiatura = builder.get_object( "sceneggiatori" )
         sceneggiatura_childrens = sceneggiatura.get_children()
         albo.sceneggiatori = []

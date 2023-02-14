@@ -122,26 +122,24 @@ with conn:
 
     # AUTORI (soggettisti e sceneggiatori)
     c = conn.cursor()
-    c.execute("""SELECT nome, cognome
+    c.execute("""SELECT (nome || " " || cognome)
                  FROM autori
                  WHERE tipo = 1 OR tipo = 3""") # 3 autore completo
 
-    lista_autori = c.fetchall()
+    lista_autori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for autore in lista_autori:
-        autore = autore[0] + " " + autore[1]
         iteratore = scrittori_store.append()
         scrittori_store.set( iteratore, 0, autore )
 
     # DISEGNATORI
-    c.execute("""SELECT nome, cognome
+    c.execute("""SELECT (nome || " " || cognome)
                  FROM autori
                  WHERE tipo = 2 OR tipo = 3""") # 3 autore completo
 
-    lista_disegnatori = c.fetchall()
+    lista_disegnatori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for disegnatore in lista_disegnatori:
-        disegnatore = disegnatore[0] + " " + disegnatore[1]
         iteratore = disegnatori_store.append()
         disegnatori_store.set( iteratore, 0, disegnatore )
 

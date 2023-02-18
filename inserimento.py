@@ -129,8 +129,7 @@ with conn:
     lista_scrittori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for scrittore in lista_scrittori:
-        iteratore = scrittori_store.append()
-        scrittori_store.set( iteratore, 0, scrittore )
+        scrittori_store.append( [scrittore] )
 
     # DISEGNATORI
     c.execute("""SELECT (nome || " " || cognome)
@@ -140,14 +139,12 @@ with conn:
     lista_disegnatori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for disegnatore in lista_disegnatori:
-        iteratore = disegnatori_store.append()
-        disegnatori_store.set( iteratore, 0, disegnatore )
+        disegnatori_store.append( [disegnatore] )
 
     # COPERTINISTI
     lista_copertinisti = ( "Claudio Castellini", "Roberto De Angelis", "Sergio Giardo" )
     for copertinista in lista_copertinisti:
-        iteratore = copertinista_store.append()
-        copertinista_store.set( iteratore, 0, copertinista )
+        copertinista_store.append( [copertinista] )
 
 
 sogg_entry = builder.get_object( "soggetto" )

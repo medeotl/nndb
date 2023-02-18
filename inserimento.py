@@ -61,6 +61,21 @@ class Handler:
 
         # salvo albo in database
 
+        # aggiorno liste di autocompletamento per scrittori e disegnatori
+        for scrittore in set( albo.soggettisti + albo.sceneggiatori):
+            if any(scrittore in riga for riga in scrittori_store):
+                print(f"DEBUG--- {scrittore} è già presente nel database")
+            else:
+                print(f"DEBUG--- {scrittore} è un nuovo scrittore")
+                scrittori_store.append( [scrittore] )
+                
+        for disegnatore in albo.disegnatori:
+            if any(disegnatore in riga for riga in disegnatori_store):
+                print(f"DEBUG--- {disegnatore} è già presente nel database")
+            else:
+                print(f"DEBUG--- {disegnatore} è un nuovo disegnatore")
+                disegnatori_store.append( [disegnatore] )
+                
         # vado ad albo successivo
         nro_albo.spin( Gtk.SpinType.STEP_FORWARD, 1 )
 

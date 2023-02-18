@@ -126,11 +126,11 @@ with conn:
                  FROM autori
                  WHERE tipo = 1 OR tipo = 3""") # 3 autore completo
 
-    lista_autori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
+    lista_scrittori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
-    for autore in lista_autori:
+    for scrittore in lista_scrittori:
         iteratore = scrittori_store.append()
-        scrittori_store.set( iteratore, 0, autore )
+        scrittori_store.set( iteratore, 0, scrittore )
 
     # DISEGNATORI
     c.execute("""SELECT (nome || " " || cognome)

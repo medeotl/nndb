@@ -94,13 +94,26 @@ class Handler:
         # imposto il focus alla entry del titolo
         titolo.grab_focus()
 
-    def add_entry( self, btn ):
+    def add_entry_scrittore( self, btn ):
+        """ carica una entry aggiuntiva per il campo Soggetto o Sceneggiatura """
+        self.add_entry( btn, scrittori_store )
+
+    def add_entry_disegnatore( self, btn ):
+        """ carica una entry aggiuntiva per il campo Disegni """
+        self.add_entry( btn, disegnatori_store )
+
+    def add_entry( self, btn, list_store ):
         """ carica un entry aggiuntiva (per autori multipli) """
 
         vbox = btn.get_parent().get_parent()
         btnbox = Gtk.ButtonBox( orientation=Gtk.Orientation.HORIZONTAL )
 
         entry = Gtk.Entry()
+        entry_completion = Gtk.EntryCompletion()
+        entry_completion.set_model( list_store )
+        entry_completion.set_text_column(0)
+        entry.set_completion( entry_completion )
+        
         btn_remove = Gtk.Button()
         icon_remove = Gtk.Image()
         icon_remove.set_from_icon_name( "list-remove", Gtk.IconSize.BUTTON )

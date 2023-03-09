@@ -143,6 +143,7 @@ with conn:
                  FROM autori
                  WHERE tipo = 1 OR tipo = 3""") # 3 autore completo
 
+    # genero lista di stringhe da lista di tuple
     lista_scrittori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for scrittore in lista_scrittori:
@@ -153,6 +154,7 @@ with conn:
                  FROM autori
                  WHERE tipo = 2 OR tipo = 3""") # 3 autore completo
 
+    # genero lista di stringhe da lista di tuple
     lista_disegnatori = ["".join(nome_cognome) for nome_cognome in c.fetchall()]
 
     for disegnatore in lista_disegnatori:

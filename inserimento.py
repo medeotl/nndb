@@ -123,6 +123,8 @@ class Handler:
         btnbox.destroy()
         window.resize( 1, 1 )
 
+######----------                          MAIN                          ----------######
+
 builder = Gtk.Builder()
 builder.add_from_file( "./data/ui/data_insertion.ui" )
 builder.connect_signals( Handler() )

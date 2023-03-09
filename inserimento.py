@@ -132,7 +132,7 @@ builder.connect_signals( Handler() )
 # creo lista autori/disegnatori/copertinista per autocompletamento
 scrittori_store = Gtk.ListStore( str )
 disegnatori_store = Gtk.ListStore( str )
-copertinista_store = Gtk.ListStore( str )
+copertinisti_store = Gtk.ListStore( str )
 
 conn = sqlite3.connect( './data/nn.db' )
 with conn:
@@ -163,7 +163,7 @@ with conn:
     # COPERTINISTI
     lista_copertinisti = ( "Claudio Castellini", "Roberto De Angelis", "Sergio Giardo" )
     for copertinista in lista_copertinisti:
-        copertinista_store.append( [copertinista] )
+        copertinisti_store.append( [copertinista] )
 
 
 sogg_entry = builder.get_object( "soggetto" )
@@ -184,7 +184,7 @@ cop_entry.set_completion( cop_completion )
 sogg_completion.set_model( scrittori_store )
 scen_completion.set_model( scrittori_store )
 dis_completion.set_model( disegnatori_store )
-cop_completion.set_model( copertinista_store )
+cop_completion.set_model( copertinisti_store )
 
 sogg_completion.set_text_column( 0 )
 scen_completion.set_text_column( 0 )

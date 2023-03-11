@@ -70,6 +70,7 @@ class Handler:
         self.set_navigation_buttons(albo)
         window.resize(1, 1) # rimuovo spazio in eccesso
 
+######----------                          MAIN                          ----------######
 
 GUI = './data/ui/main.ui'
 COVER_PATH = './data/cover/nat'
